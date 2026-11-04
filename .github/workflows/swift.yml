@@ -1,4 +1,4 @@
-name: iOS Demo Build
+name: name: iOS Demo Build
 
 on:
   workflow_dispatch:
@@ -20,4 +20,5 @@ jobs:
 
       - name: Build Swift package
         run: swift build
+        
         
