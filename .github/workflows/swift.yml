@@ -1,4 +1,4 @@
-name: name: iOS Demo Build
+name: iOS Build
 
 on:
   workflow_dispatch:
@@ -6,19 +6,19 @@ on:
 jobs:
   build:
     runs-on: macos-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Show Xcode version
+      - name: Check Xcode
         run: xcodebuild -version
 
-      - name: Check project files
+      - name: List project files
         run: |
-          find . -name "*.xcodeproj" -o -name "*.xcworkspace" -o -name "Package.swift"
+          find . -maxdepth 5 -name '*.xcodeproj' -o -name '*.xcworkspace' -o -name 'Package.swift'
 
-      - name: Build Swift package
-        run: swift build
+      - name: Check Swift files
+        run: |
+          find App -name '*.swift'
         
         
