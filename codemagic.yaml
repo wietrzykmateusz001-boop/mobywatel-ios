@@ -16,7 +16,7 @@ workflows:
       - name: Build iOS app
         script: |
           xcodebuild \
-            -project MojaAplikacja.xcodeproj \
+            -project mObywatel.xcodeproj \
             -scheme MojaAplikacja \
             -sdk iphoneos \
             -configuration Release \
