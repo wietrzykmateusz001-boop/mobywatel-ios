@@ -7,11 +7,9 @@ workflows:
     environment:
       xcode: latest
     scripts:
-      - name: Check project files
+            - name: Build Swift package
         script: |
-          echo "Checking Swift files..."
-          find . -name "*.swift"
-          echo "Checking Xcode projects..."
-          find . -name "*.xcodeproj" -o -name "*.xcworkspace"
+          swift --version
+          swift build -v
     artifacts:
       - build/**/*
