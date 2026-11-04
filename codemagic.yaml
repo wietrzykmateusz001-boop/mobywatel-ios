@@ -7,9 +7,7 @@ workflows:
     environment:
       xcode: latest
     scripts:
-            - name: Build Swift package
+      - name: Build Swift package
         script: |
           swift --version
           swift build -v
-    artifacts:
-      - build/**/*
