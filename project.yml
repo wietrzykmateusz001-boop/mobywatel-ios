@@ -1,0 +1,21 @@
+
+name: mObywatel
+
+options:
+  bundleIdPrefix: pl.demo
+  deploymentTarget:
+    iOS: "16.0"
+
+targets:
+  MojaAplikacja:
+    type: application
+    platform: iOS
+    sources:
+      - path: App/MojaAplikacjaApp.swift
+      - path: App/DesignSystemPreview/DesignSystemPreview/ContentView.swift
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: pl.demo.mojaaplikacja
+        INFOPLIST_KEY_CFBundleDisplayName: Moja Aplikacja Demo
+        GENERATE_INFOPLIST_FILE: YES
+        SWIFT_VERSION: 5.0
