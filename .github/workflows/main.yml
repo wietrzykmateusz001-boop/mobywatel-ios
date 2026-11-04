@@ -1,0 +1,37 @@
+name: iOS Demo Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate project
+        run: xcodegen generate
+
+      - name: Build iOS app
+        run: |
+          xcodebuild \
+            -project mObywatel.xcodeproj \
+            -scheme MojaAplikacja \
+            -sdk iphoneos \
+            -configuration Release \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Upload app
+        uses: actions/upload-artifact@v4
+        with:
+          name: MojaAplikacja
+          path: build/Build/Products/Release-iphoneos/MojaAplikacja.app
