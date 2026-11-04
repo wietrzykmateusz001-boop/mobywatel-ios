@@ -7,7 +7,20 @@ workflows:
     environment:
       xcode: latest
     scripts:
-      - name: Build Swift package
+      - name: Install XcodeGen
         script: |
-          swift --version
-          swift build -v
+          brew install xcodegen
+      - name: Generate Xcode project
+        script: |
+          xcodegen generate
+      - name: Build iOS app
+        script: |
+          xcodebuild \
+            -project MojaAplikacja.xcodeproj \
+            -scheme MojaAplikacja \
+            -sdk iphoneos \
+            -configuration Release \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO
+    artifacts:
+      - build/Build/Products/Release-iphoneos/*.app
